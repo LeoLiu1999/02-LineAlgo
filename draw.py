@@ -12,7 +12,7 @@ def draw_line( x0, y0, x1, y1, screen, color ):
     y = y0
     
     #if octant 1
-    if ((-1 * b) > a and a > 0):
+    if ((-1 * b) >= a and a >= 0):
         d = a + a + b
 
         a += a #a => 2a
@@ -20,9 +20,9 @@ def draw_line( x0, y0, x1, y1, screen, color ):
         while(x <= x1):
             plot(screen, color, x, y)
             if (d > 0):
-                y ++
+                y += 1
                 d += b
-            x ++
+            x += 1
             d += a
         return
     
@@ -34,38 +34,38 @@ def draw_line( x0, y0, x1, y1, screen, color ):
         b += b #b => 2b
         while(y <= y1):
             plot(screen, color, x, y)
-            if (d < 0)
-                x ++
+            if (d < 0):
+                x += 1
                 d += a
-            y ++
+            y += 1
             d += b
         return
     
     #if octant 7
-    if (a < b):
-        d = a - b - b
+    if (a <= b):
+        d = a + b + b
         a += a
         b += b
         while(x <= x1):
             plot(screen, color, x, y)
-            if (d > 0):
-                x ++
-                d += a
-            y --
-            d += 2b
+            if (d < 0):
+                x += 1
+                d -= a
+            y -= 1
+            d += b
         return
     
     #if octant 8
     if (b < a and a < 0):
-        d = a + a - b
+        d = a + a + b
         a += a
         b += b
         while(x <= x1):
             plot(screen, color, x, y)
             if ( d > 0):
-                y --
-                d -= b
-            x ++
-            d += a
+                y -= 1
+                d += b
+            x += 1
+            d -= a
 
-,m
+    #horizontal lines, slope == +-1 lines
